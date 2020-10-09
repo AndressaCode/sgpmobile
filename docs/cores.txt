@@ -3,3 +3,4 @@ Cores V1.0
 #64718C Cinza escuro
 #F2F2F2 Cinza Claro
 #707070 Cor do texto
+#157BEA Azul
