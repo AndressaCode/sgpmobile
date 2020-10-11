@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: Home()));
@@ -13,6 +15,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final _user = new TextEditingController();
+    var cpfController = new MaskedTextController(mask: '000.000.000-00');
 
     return Scaffold(
 //      appBar: AppBar(
@@ -29,26 +32,25 @@ class _HomeState extends State<Home> {
               height: 200,
               decoration: BoxDecoration(
                   gradient: LinearGradient(colors: [
-                Color(0xFF64718C),
-                Color(0xFF64718C),
+                Color(0xFF054B9A),
+                Color(0xFF056FE5),
               ])),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Center(
-                    child: Container(
-                      width: 400,
+              child: Center(
+                child: Column(
+                  children: [
+                    Container(
+                      width: 250,
                       height: 200.0,
                       child: Image(
                         image: AssetImage('assets/sgp-logo.png'),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Divider(
-              color: Colors.black,
+              color: Color(0xFFFF9C03),
               thickness: 20.0,
             ),
             SizedBox(
@@ -57,38 +59,149 @@ class _HomeState extends State<Home> {
             Text(
               'Central do assinante',
               style: TextStyle(
-                  color: Color(0xFF64718C),
+                  color: Color(0xFF054B9A),
                   fontWeight: FontWeight.bold,
-                  fontSize: 20.0,
+                  fontSize: 24.0,
                   fontStyle: FontStyle.italic),
             ),
-            Divider(
-              color: Color(0xFF64718C),
-              height: 20.0,
-              thickness: 5.0,
-              indent: 20.0,
-              endIndent: 20.0,
+//            Divider(
+//              color: Color(0xFF054B9A),
+//              height: 20.0,
+//              thickness: 2.0,
+//              indent: 30.0,
+//              endIndent: 30.0,
+//            ),
+            SizedBox(height: 15.0),
+            Container(
+              width: 300.0,
+              height: 50.0,
+              child: TextFormField(
+                controller: cpfController,
+                decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.account_circle,
+                      color: Color(0xFF054B9A),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Color(0xFF054B9A),
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: Colors.blueAccent,
+                          width: 1.0,
+                        )),
+                    hintText: 'Documento',
+                  hintStyle: TextStyle(fontSize: 15.0, color: Color(0xFF054B9A)),
+                ),
+              ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Text('Aqui vai o switcher Login/Senha ou CPF/CNPJ'),
-            ),
-            Divider(
-              color: Color(0xFF64718C),
-              height: 40.0,
-              thickness: 5.0,
-              indent: 20.0,
-              endIndent: 20.0,
+            SizedBox(
+              height: 10.0,
             ),
             Container(
+              width: 300.0,
+              height: 50.0,
               child: TextFormField(
-                autofocus: true,
-                keyboardType: TextInputType.text,
-                controller: _user,
-                style:
-                new TextStyle(color: Colors.deepPurple, fontSize: 22),
+                obscureText: true,
                 decoration: InputDecoration(
-                  labelText: "Matricula",
+                    prefixIcon: Icon(
+                      Icons.vpn_key,
+                      color: Color(0xFF054B9A),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide(
+                        color: Color(0xFF054B9A),
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          color: Colors.blueAccent,
+                          width: 1.0,
+                        )),
+                    hintText: 'Senha',
+                  hintStyle: TextStyle(fontSize: 15.0, color: Color(0xFF054B9A)),
+                ),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            Container(
+              width: 200.0,
+              height: 50.0,
+              child: FlatButton(
+                color: Color(0xFFEC8F00),
+                splashColor: Colors.blueAccent,
+                onPressed: () {},
+                shape: StadiumBorder(),
+                child: Text(
+                  'Entrar',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Divider(
+              color: Color(0xFF054B9A),
+              height: 20.0,
+              thickness: 2.0,
+              indent: 30.0,
+              endIndent: 30.0,
+            ),
+            Container(
+              width: 300.0,
+              height: 100.0,
+//              color: Colors.blueAccent,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'RECUPERAR SENHA/ ',
+                          style: TextStyle(
+                              color: Color(0xFF054B9A),
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'PRIMEIRO ACESSO',
+                          style: TextStyle(
+                              color: Color(0xFF054B9A),
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 20.0,
+                    ),
+                    Center(
+                      child: Container(
+                        width: 100.0,
+                        height: 50.0,
+                        child: OutlineButton(
+                          color: Color(0xFFEC8F00),
+                          onPressed: () {},
+                          child: Text('Acessar',
+                              style: TextStyle(
+                                  color: Color(0xFFEC8F00),
+                                  fontWeight: FontWeight.bold)),
+                          borderSide: BorderSide(color: Colors.blue),
+                          shape: StadiumBorder(),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
