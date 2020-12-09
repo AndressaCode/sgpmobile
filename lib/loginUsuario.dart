@@ -7,6 +7,8 @@ class LoginUsuario extends StatefulWidget {
 }
 
 class _LoginUsuarioState extends State<LoginUsuario> {
+  int index = 0;
+
   @override
   Widget build(BuildContext context) {
     final _user = new TextEditingController();
@@ -42,42 +44,65 @@ class _LoginUsuarioState extends State<LoginUsuario> {
               color: Color(0xFF554E54),
               thickness: 20.0,
             ),
-            SizedBox(
-              height: 40.0,
-            ),
+            SizedBox(height: 30.0),
             Text(
               'Central do assinante',
               style: TextStyle(
                   color: Color(0xFF554E54),
                   fontWeight: FontWeight.bold,
-                  fontSize: 24.0,
-                  fontStyle: FontStyle.italic),
+                  fontSize: 24.0
+              ),
             ),
-//            Divider(
-//              color: Color(0xFF054B9A),
-//              height: 20.0,
-//              thickness: 2.0,
-//              indent: 30.0,
-//              endIndent: 30.0,
-//            ),
-            Center(
-              child: Container(
-                child: Row(
+            SizedBox(height: 10.0),
+            IndexedStack(
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    FlatButton(
-                      onPressed: () {},
-                      child: Text('CPF/CNPJ',
-                        style: TextStyle(fontSize: 15.0, color: Color(0xFF554E54))),
-
+                    Container(
+                      color: Colors.grey[600],
+                      child: FlatButton(
+                        onPressed: () {
+                          if (index == 2) {
+                            setState(() {
+                              index = 0;
+                            });
+                          } else setState(() {
+                            index++;
+                          });
+                        },
+                        child: Text('Login/Senha',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15.0,
+                        ),),
+                      ),
                     ),
-                    FlatButton(
-                      onPressed: () {},
-                      child: Text('Login/Senha',
-                        style: TextStyle(fontSize: 15.0, color: Color(0xFF554E54))),
+                    Container(
+                      color: Colors.grey[600],
+                      child: FlatButton(
+                        onPressed: () {},
+                        child: Text('CPF/CNPJ',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
-                ),
+                )
+              ],
+            ),
+            SizedBox(height: 25.0),
+            Container(
+              width: 300.0,
+              child: Divider(
+                color: Colors.grey[300],
+                height: 20.0,
+                thickness: 2.0,
               ),
             ),
             SizedBox(height: 15.0),
@@ -88,22 +113,22 @@ class _LoginUsuarioState extends State<LoginUsuario> {
                 controller: cpfController,
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.account_circle,
+                    Icons.person_outline,
                     color: Color(0xFF554E54),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
                       color: Color(0xFF554E54),
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       borderSide: BorderSide(
                         color: Color(0xFF88898C),
                         width: 1.0,
                       )),
-                  hintText: 'Documento',
+                  hintText: 'Login',
                   hintStyle: TextStyle(fontSize: 15.0, color: Color(0xFF554E54)),
                 ),
               ),
@@ -118,17 +143,17 @@ class _LoginUsuarioState extends State<LoginUsuario> {
                 obscureText: true,
                 decoration: InputDecoration(
                   prefixIcon: Icon(
-                    Icons.vpn_key,
+                    Icons.lock_open,
                     color: Color(0xFF554E54),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(5.0),
                     borderSide: BorderSide(
                       color: Color(0xFF554E54),
                     ),
                   ),
                   enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(5.0),
                       borderSide: BorderSide(
                         color: Color(0xFF88898C),
                         width: 1.0,
@@ -138,80 +163,42 @@ class _LoginUsuarioState extends State<LoginUsuario> {
                 ),
               ),
             ),
-            SizedBox(height: 20.0),
+            SizedBox(height: 30.0),
             Container(
-              width: 200.0,
-              height: 50.0,
+              width: 300.0,
+              child: Divider(
+                color: Colors.grey[300],
+                height: 20.0,
+                thickness: 2.0,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Container(
+              width: 300.0,
+              height: 40.0,
               child: FlatButton(
-                color: Color(0xFFEC8F00),
+                color: Color(0xFF167BEA),
                 splashColor: Colors.blueAccent,
                 onPressed: () {},
-                shape: StadiumBorder(),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
                 child: Text(
                   'Acessar',
                   style: TextStyle(
+                    fontSize: 16.0,
                     color: Colors.white,
                   ),
                 ),
               ),
             ),
             SizedBox(height: 10.0),
-            Divider(
-              color: Color(0xFF054B9A),
-              height: 20.0,
-              thickness: 2.0,
-              indent: 30.0,
-              endIndent: 30.0,
-            ),
             Container(
               width: 300.0,
-              height: 100.0,
-//              color: Colors.blueAccent,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'RECUPERAR SENHA/ ',
-                          style: TextStyle(
-                              color: Color(0xFF054B9A),
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'PRIMEIRO ACESSO',
-                          style: TextStyle(
-                              color: Color(0xFF054B9A),
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    Center(
-                      child: Container(
-                        width: 100.0,
-                        height: 50.0,
-                        child: OutlineButton(
-                          color: Color(0xFFEC8F00),
-                          onPressed: () {},
-                          child: Text('Acessar',
-                              style: TextStyle(
-                                  color: Color(0xFFEC8F00),
-                                  fontWeight: FontWeight.bold)),
-                          borderSide: BorderSide(color: Colors.blue),
-                          shape: StadiumBorder(),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              child: Divider(
+                color: Colors.grey[300],
+                height: 20.0,
+                thickness: 2.0,
               ),
             ),
           ],
